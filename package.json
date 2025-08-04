@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+5miv4h-codex/create-voice-pause-video-pwa
+    "dev": "python3 -m http.server 5173",
+    "build": "echo 'build step not required'",
+    "test": "echo 'no tests'",
+    "lint": "echo 'no lint'",
+    "e2e": "echo 'no e2e'"
+
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -28,5 +35,6 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "playwright": "^1.41.0"
+main
   }
 }
