@@ -16,7 +16,6 @@ npm test
 npm run e2e
 ```
 
- uf69jq-codex/fix-mp4-export-to-include-narration
 ## Deployment
 
 ```bash
