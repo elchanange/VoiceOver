@@ -1,14 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
- tp3y12-codex/create-voice-pause-video-pwa
-
-export default defineConfig({
-  plugins: [react()],
-  base: './',
-  build: {
-    outDir: 'dist'
-  }
-=======
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
@@ -24,15 +15,8 @@ export default defineConfig({
         display: 'standalone',
         background_color: '#ffffff',
         description: 'Record voice overs while pausing video',
-        icons: [
-          {
-            src: 'favicon.svg',
-            sizes: 'any',
-            type: 'image/svg+xml'
-          }
-        ]
+        icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml' }]
       }
     })
   ]
- main
 });
