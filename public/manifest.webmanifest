@@ -13,7 +13,11 @@
   "theme_color": "#2563EB",
   "icons": [
     {
+ uf69jq-codex/fix-mp4-export-to-include-narration
       "src": "favicon.svg",
+=======
+      "src": "/favicon.svg",
+ main
       "sizes": "any",
       "type": "image/svg+xml"
     }
