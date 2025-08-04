@@ -1,7 +1,6 @@
 {
   "name": "voice-pause-video",
- tp3y12-codex/create-voice-pause-video-pwa
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,51 +9,13 @@
     "preview": "vite preview",
     "lint": "eslint . --max-warnings=0",
     "test": "vitest run",
-=======
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-5miv4h-codex/create-voice-pause-video-pwa
-    "dev": "python3 -m http.server 5173",
-    "build": "echo 'build step not required'",
-    "test": "echo 'no tests'",
-    "lint": "echo 'no lint'",
-    "e2e": "echo 'no e2e'"
-
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "test": "vitest",
- main
     "e2e": "playwright test"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
- tp3y12-codex/create-voice-pause-video-pwa
-    "wavesurfer.js": "^7.6.0",
+    "wavesurfer.js": "^7.7.2",
     "framer-motion": "^11.0.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "@vitejs/plugin-react": "^4.2.0",
-    "eslint": "^8.56.0",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.7",
-    "tailwindcss": "^3.3.3",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.31",
-    "vitest": "^0.34.6",
-    "@playwright/test": "^1.39.0",
-    "mp4box": "^0.5.0",
-    "@ffmpeg/ffmpeg": "^0.12.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2",
-    "eslint-plugin-react": "^7.33.0"
-=======
-    "wavesurfer.js": "^7.7.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
@@ -68,8 +29,8 @@
     "eslint": "^8.56.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
-    "playwright": "^1.41.0"
-main
- main
+    "tailwindcss": "^3.3.3",
+    "postcss": "^8.4.31",
+    "autoprefixer": "^10.4.14"
   }
 }
