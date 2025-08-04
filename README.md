@@ -16,6 +16,17 @@ npm test
 npm run e2e
 ```
 
+ uf69jq-codex/fix-mp4-export-to-include-narration
+## Deployment
+
+```bash
+npm run build
+```
+
+Deploy the generated `dist` directory to GitHub Pages. The Vite config uses `base: '/VoiceOver/'` so asset links resolve correctly when hosted from the repository subpath.
+
+=======
+ main
 ## License
 
 MIT
