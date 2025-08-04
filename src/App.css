@@ -1,0 +1,10 @@
+.app {
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+.rec {
+  color: red;
+  margin-left: 1rem;
+  font-weight: bold;
+}

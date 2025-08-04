@@ -1,4 +1,5 @@
 node_modules
+ tp3y12-codex/create-voice-pause-video-pwa
 npm-debug.log*
 /.npm
 /dist
@@ -18,3 +19,18 @@ package-lock.json
 e2e/fixtures/sample.webm
 public/pwa-192x192.png
 public/pwa-512x512.png
+=======
+dist
+.DS_Store
+vite.config.js.timestamp-*
+playwright-report
+coverage
+e2e/fixtures/sample.webm
+public/pwa-192x192.png
+public/pwa-512x512.png
+5miv4h-codex/create-voice-pause-video-pwa
+
+package-lock.json
+
+main
+ main

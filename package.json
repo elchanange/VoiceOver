@@ -1,5 +1,6 @@
 {
   "name": "voice-pause-video",
+ tp3y12-codex/create-voice-pause-video-pwa
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -9,11 +10,29 @@
     "preview": "vite preview",
     "lint": "eslint . --max-warnings=0",
     "test": "vitest run",
+=======
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+5miv4h-codex/create-voice-pause-video-pwa
+    "dev": "python3 -m http.server 5173",
+    "build": "echo 'build step not required'",
+    "test": "echo 'no tests'",
+    "lint": "echo 'no lint'",
+    "e2e": "echo 'no e2e'"
+
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest",
+ main
     "e2e": "playwright test"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+ tp3y12-codex/create-voice-pause-video-pwa
     "wavesurfer.js": "^7.6.0",
     "framer-motion": "^11.0.0"
   },
@@ -34,5 +53,23 @@
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint-plugin-react": "^7.33.0"
+=======
+    "wavesurfer.js": "^7.7.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.16.4",
+    "vitest": "^1.2.0",
+    "jsdom": "^24.0.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "playwright": "^1.41.0"
+main
+ main
   }
 }

@@ -1,14 +1,20 @@
 name: CI
+ tp3y12-codex/create-voice-pause-video-pwa
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+=======
+
+on: [push, pull_request]
+ main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+ tp3y12-codex/create-voice-pause-video-pwa
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -25,3 +31,14 @@ jobs:
       - run: npm test
       - run: npx playwright install --with-deps
       - run: npm run e2e
+=======
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run e2e --if-present
+      - run: npm run build
+ main
