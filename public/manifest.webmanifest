@@ -1,0 +1,21 @@
+{
+  "name": "Voice Pause Video",
+  "short_name": "VoicePause",
+  "description": "Upload a video and record a voice-over while pausing playback.",
+  "name_he": "וידאו עצור קול",
+  "description_he": "העלה סרטון והקלט קריינות תוך עצירת הווידאו.",
+  "dir": "ltr",
+  "dir_he": "rtl",
+  "lang": "en",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "/public/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

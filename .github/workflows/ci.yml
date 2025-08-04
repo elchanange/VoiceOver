@@ -1,11 +1,37 @@
 name: CI
+ tp3y12-codex/create-voice-pause-video-pwa
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+=======
 
 on: [push, pull_request]
+ main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+ tp3y12-codex/create-voice-pause-video-pwa
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npx playwright install --with-deps
+      - run: npm run e2e
+=======
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -15,3 +41,4 @@ jobs:
       - run: npm test
       - run: npm run e2e --if-present
       - run: npm run build
+ main
