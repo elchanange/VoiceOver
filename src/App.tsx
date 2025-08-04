@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import MicrophonePlugin from 'wavesurfer.js/dist/plugins/microphone.esm.js';
+import RecordPlugin from 'wavesurfer.js/dist/plugins/record.esm.js';
 import { togglePlayback } from './utils/toggle';
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
         progressColor: '#FACC15',
         cursorWidth: 0,
         height: 80,
-        plugins: [MicrophonePlugin.create()]
+        plugins: [RecordPlugin.create()]
       });
     }
     return () => wavesurfer.current?.destroy();
@@ -51,9 +51,9 @@ export default function App() {
 
   const startRecording = async () => {
     if (recording) return;
-    const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const audioStream = await wavesurfer.current?.plugins.record.startMic();
     const canvasStream = canvasRef.current?.captureStream();
-    if (!canvasStream) return;
+    if (!canvasStream || !audioStream) return;
     const mixed = new MediaStream([
       ...canvasStream.getVideoTracks(),
       ...audioStream.getAudioTracks()
@@ -63,14 +63,13 @@ export default function App() {
     recorder.start();
     recorderRef.current = recorder;
     setRecording(true);
-    wavesurfer.current?.plugins.microphone.start();
     drawFrame();
     videoRef.current?.play();
   };
 
   const stopRecording = () => {
     recorderRef.current?.stop();
-    wavesurfer.current?.plugins.microphone.stop();
+    wavesurfer.current?.plugins.record.stopMic();
     setRecording(false);
     videoRef.current?.pause();
   };
@@ -99,7 +98,7 @@ export default function App() {
   const exportRecording = async () => {
     if (!chunks.length) return;
     const blob = new Blob(chunks, { type: 'video/webm' });
-    const { createFFmpeg, fetchFile } = await import('@ffmpeg/ffmpeg');
+    const { createFFmpeg, fetchFile } = await (eval('import("@ffmpeg/ffmpeg")') as Promise<any>);
     const ffmpeg = createFFmpeg({ log: false });
     await ffmpeg.load();
     ffmpeg.FS('writeFile', 'in.webm', await fetchFile(blob));
