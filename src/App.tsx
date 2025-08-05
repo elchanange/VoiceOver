@@ -98,7 +98,9 @@ export default function App() {
   const exportRecording = async () => {
     if (!chunks.length) return;
     const blob = new Blob(chunks, { type: 'video/webm' });
-    const { createFFmpeg, fetchFile } = await (eval('import("@ffmpeg/ffmpeg")') as Promise<any>);
+    const { createFFmpeg, fetchFile } = await import(
+      'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.7/dist/ffmpeg.min.mjs'
+    );
     const ffmpeg = createFFmpeg({ log: false });
     await ffmpeg.load();
     ffmpeg.FS('writeFile', 'in.webm', await fetchFile(blob));
