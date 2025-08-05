@@ -8,19 +8,21 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const waveformRef = useRef<HTMLDivElement>(null);
   const wavesurfer = useRef<WaveSurfer>();
+  const recordPlugin = useRef<ReturnType<typeof RecordPlugin.create> | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const [chunks, setChunks] = useState<Blob[]>([]);
   const [recording, setRecording] = useState(false);
 
   useEffect(() => {
     if (waveformRef.current) {
+      recordPlugin.current = RecordPlugin.create();
       wavesurfer.current = WaveSurfer.create({
         container: waveformRef.current,
         waveColor: '#2563EB',
         progressColor: '#FACC15',
         cursorWidth: 0,
         height: 80,
-        plugins: [RecordPlugin.create()]
+        plugins: [recordPlugin.current]
       });
     }
     return () => wavesurfer.current?.destroy();
@@ -51,7 +53,7 @@ export default function App() {
 
   const startRecording = async () => {
     if (recording) return;
-    const audioStream = await wavesurfer.current?.plugins.record.startMic();
+    const audioStream = await recordPlugin.current?.startMic();
     const canvasStream = canvasRef.current?.captureStream();
     if (!canvasStream || !audioStream) return;
     const mixed = new MediaStream([
@@ -69,7 +71,7 @@ export default function App() {
 
   const stopRecording = () => {
     recorderRef.current?.stop();
-    wavesurfer.current?.plugins.record.stopMic();
+    recordPlugin.current?.stopMic();
     setRecording(false);
     videoRef.current?.pause();
   };
