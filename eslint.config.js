@@ -7,7 +7,7 @@ import globals from 'globals';
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: { parser, globals: globals.browser },
     plugins: { '@typescript-eslint': ts, react },
     rules: {

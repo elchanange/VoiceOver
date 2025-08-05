@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { trimBuffer } from './trim';
+import { trimBuffer } from './trim.js';
 
 describe('trimBuffer', () => {
   it('trims to given range', () => {

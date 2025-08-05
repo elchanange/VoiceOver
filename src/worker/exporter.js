@@ -1,7 +1,7 @@
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 
-self.onmessage = async (e: MessageEvent) => {
-  const { video, audio } = e.data as { video: string; audio: Blob };
+self.onmessage = async (e) => {
+  const { video, audio } = e.data;
   if ('VideoEncoder' in self && 'AudioEncoder' in self) {
     // WebCodecs path would go here; to keep worker lightweight we fallback to ffmpeg.wasm
   }

@@ -1,15 +1,15 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import RecordPlugin from 'wavesurfer.js/dist/plugins/record.esm.js';
-import { togglePlayback } from './utils/toggle';
+import { togglePlayback } from './utils/toggle.js';
 
 export default function App() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const waveformRef = useRef<HTMLDivElement>(null);
-  const wavesurfer = useRef<WaveSurfer>();
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const [chunks, setChunks] = useState<Blob[]>([]);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const waveformRef = useRef(null);
+  const wavesurfer = useRef();
+  const recorderRef = useRef(null);
+  const [chunks, setChunks] = useState([]);
   const [recording, setRecording] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function App() {
     render();
   }, [recording]);
 
-  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = (e) => {
     const file = e.target.files?.[0];
     if (file && videoRef.current) {
       videoRef.current.src = URL.createObjectURL(file);
@@ -80,21 +80,6 @@ export default function App() {
     togglePlayback(video);
   }, []);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        togglePause();
-      } else if (e.key.toLowerCase() === 'r') {
-        startRecording();
-      } else if (e.key.toLowerCase() === 'e') {
-        exportRecording();
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  });
-
   const exportRecording = async () => {
     if (!chunks.length) return;
     const blob = new Blob(chunks, { type: 'video/webm' });
@@ -112,6 +97,21 @@ export default function App() {
     a.download = 'output.mp4';
     a.click();
   };
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePause();
+      } else if (e.key.toLowerCase() === 'r') {
+        startRecording();
+      } else if (e.key.toLowerCase() === 'e') {
+        exportRecording();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [togglePause, startRecording, exportRecording]);
 
   return (
     <div className="p-4 flex flex-col lg:flex-row gap-4">
