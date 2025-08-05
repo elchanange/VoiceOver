@@ -80,21 +80,6 @@ export default function App() {
     togglePlayback(video);
   }, []);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        togglePause();
-      } else if (e.key.toLowerCase() === 'r') {
-        startRecording();
-      } else if (e.key.toLowerCase() === 'e') {
-        exportRecording();
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  });
-
   const exportRecording = async () => {
     if (!chunks.length) return;
     const blob = new Blob(chunks, { type: 'video/webm' });
@@ -112,6 +97,21 @@ export default function App() {
     a.download = 'output.mp4';
     a.click();
   };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePause();
+      } else if (e.key.toLowerCase() === 'r') {
+        startRecording();
+      } else if (e.key.toLowerCase() === 'e') {
+        exportRecording();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [togglePause, startRecording, exportRecording]);
 
   return (
     <div className="p-4 flex flex-col lg:flex-row gap-4">
